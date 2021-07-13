@@ -1,0 +1,6 @@
+[submodule "api/socket-api"]
+	path = api/socket-api
+	url = https://github.com/flavionobre11/chat-socketio-api.git
+[submodule "ui/socket-app"]
+	path = ui/socket-app
+	url = https://github.com/flavionobre11/chat-socketio-app.git

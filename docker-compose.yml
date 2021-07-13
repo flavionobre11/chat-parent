@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  chat-api:
+    build: 
+      context: ./api/chat-socketio-api
+    container_name: chat-api
+    tty: true
+    entrypoint: sh ./.docker/entrypoint.sh
+    ports:
+      - 3012:3012
+    volumes: 
+      - ./api/chat-socketio-api:/usr/chat-socketio-api/app
+    networks: 
+      - app
+  
+  chat-app:
+    build:
+      context: ./ui/chat-socketio-app
+    container_name: chat-app
+    tty: true
+    entrypoint: sh ./.docker/entrypoint.sh
+    ports:
+      - 8080:8080
+    volumes:
+      - ./ui/chat-socketio-app:/usr/chat-socketio-app/app
+    networks: 
+      - app
+
+networks:
+  app:
+    driver: bridge
